@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String         @id @default(cuid())
+  name           String
+  email          String?        @unique
+  phoneNumber    String?        @unique
+  password       String
+  role           String         @default("user")
+  selectedMascot String         @default("StarPy")
+  xp             Int            @default(0)
+  streak         Int            @default(1)
+  level          Int            @default(1)
+  hearts         Int            @default(5)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  progress       UserProgress[]
+  arenaAnswers   ArenaAnswer[]
+}
+
+model UserProgress {
+  id          String   @id @default(cuid())
+  userId      String
+  stepId      Int
+  xpEarned    Int      @default(100)
+  completedAt DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, stepId])
+}
+
+// Arena answers – store each question answer with explanation
+model ArenaAnswer {
+  id            String   @id @default(cuid())
+  userId        String
+  questionId    Int
+  selectedOption String
+  isCorrect     Boolean
+  explanation   String
+  createdAt     DateTime @default(now())
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([userId, questionId])
+}

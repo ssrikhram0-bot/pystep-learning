@@ -1,0 +1,57 @@
+{
+  "name": "final-ewb",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "prisma db push",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:generate": "prisma generate",
+    "db:studio": "prisma studio",
+    "use:mysql": "node scripts/switch-db.js mysql",
+    "use:sqlite": "node scripts/switch-db.js sqlite",
+    "db:check": "tsx scripts/check-db.ts",
+    "db:seed:200": "tsx scripts/seed-200-users.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^2.30.0",
+    "@monaco-editor/react": "^4.7.0",
+    "@prisma/client": "^6.4.1",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "bcryptjs": "^3.0.3",
+    "clsx": "^2.1.1",
+    "html-to-image": "^1.11.13",
+    "html2canvas": "^1.4.1",
+    "lucide-react": "^1.54.0",
+    "next": "^16.4.0",
+    "prisma": "^6.4.1",
+    "pyodide": "^314.0.7",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "recharts": "^3.10.1",
+    "tailwind-merge": "^3.7.0",
+    "three": "^0.186.1",
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/bcryptjs": "^2.4.6",
+    "autoprefixer": "^10.6.1",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.0",
+    "postcss": "^8.5.29",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  }
+}
