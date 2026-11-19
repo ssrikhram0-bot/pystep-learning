@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/adminAuth";
 import { hashPassword } from "@/lib/auth";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: Request) {
   const admin = await requireAdmin();
   if (!admin) {

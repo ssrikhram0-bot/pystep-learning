@@ -1,7 +1,8 @@
-// src/app/api/arena/answers/route.ts
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+
+export const dynamic = "force-dynamic";
 
 // POST: save a single answer (or bulk for admin)
 export async function POST(req: Request) {
